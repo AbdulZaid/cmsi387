@@ -1,4 +1,4 @@
-\documentclass[12pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\documentclass[12pt, oneside]{amsart}   	% use "amsart" instead of "article" for AMSLaTeX format
 \usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
 \geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
 %\geometry{landscape}                		% Activate for for rotated page geometry
@@ -6,8 +6,9 @@
 \usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
 								% TeX will automatically convert eps --> pdf in pdflatex		
 \usepackage{amssymb}
+\usepackage{listings}
 
-\title{Command ?Crib Sheet"}
+\title{Command Crib Sheet"}
 \author{Abdul Alzaid}
 %\date{}							% Activate to display a given date or no date
 
@@ -25,7 +26,6 @@ This is a a Unix command glossary for at least ten commands. Each of which has, 
     cd & Change directory  \\ \hline
     ls &  ls provides a tree-like listing of a directory structure.  \\ \hline
     cp & Copy one or more files to another location  \\ \hline
-    install & Copy files and set attributes.  \\ \hline
     mv & Move or rename files or directories.  \\ \hline
     mkdir & Create new folder(s), if they do not already exist.  \\ \hline
     rmdir & Remove directory, this command will only work if the folders are empty.  \\ \hline
@@ -36,4 +36,43 @@ This is a a Unix command glossary for at least ten commands. Each of which has, 
     ln & Creates links to pre-existings files.  \\ \hline
         \end{tabular}
 \end{center}
+
+{\Large Samples on how to use each command.}
+
+("cd")
+\begin{lstlisting} [frame=single]
+~ AbdulZaid$ cd Desktop // Change directory to Desktop.
+ \end{lstlisting} 
+ 
+ ("ls")
+ \begin{lstlisting} [frame=single]
+Abduls-MacBook-Pro:~ AbdulZaid$ ls
+2.28.circ	Desktop		GoideProjects	Music
+Subtractor.circ    3.19.circ	Documents	Google Drive
+Pictures   // it provides a list of wheat's in the directory.
+ In this case Home dir
+\end{lstlisting} 
+
+("cp")
+ \begin{lstlisting} [frame=single]
+Abduls-MacBook-Pro:Documents AbdulZaid$ cp FinalEdit.pdf 
+FirstEdit.pdf  // Copies a file to another file. in this case,
+it copies the file "FinalEdit.pdf" to a new FirstEdit.pdf
+\end{lstlisting} 
+
+("mv")
+ \begin{lstlisting} [frame=single]
+Abduls-MacBook-Pro:rpg AbdulZaid$ mv index.html indexx.html
+// mv moves or rename files, in this case it changes
+index.html to indexx.html
+\end{lstlisting} 
+
+
+("mkdir")
+ \begin{lstlisting} [frame=single]
+Abduls-MacBook-Pro:rpg AbdulZaid$ mkdir newFolder // It makes
+a new directory, where in this case the directory name is
+ "newFolder"
+\end{lstlisting} 
+
 \end{document}  
