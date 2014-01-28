@@ -1,0 +1,286 @@
+Last login: Wed Jan 22 23:44:20 on ttys001
+Abduls-MacBook-Pro:~ AbdulZaid$ ssh aalzaid1@my.cs.lmu.edu
+aalzaid1@my.cs.lmu.edu's password: 
+Welcome to Ubuntu 11.10 (GNU/Linux 3.0.0-12-server x86_64)
+
+ * Documentation:  https://help.ubuntu.com/11.10/serverguide/C
+
+  System information as of Thu Jan 23 12:21:35 PST 2014
+
+  System load:    0.0               Processes:           136
+  Usage of /home: 1.4% of 45.83GB   Users logged in:     5
+  Memory usage:   27%               IP address for eth0: 157.242.71.21
+  Swap usage:     0%
+
+  Graph this data and manage this system at https://landscape.canonical.com/
+New release '12.04 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+              _     __  __   _   _        ___   __  __   ___   ___  
+             | |   |  \/  | | | | |      / __| |  \/  | / __| |_ _| 
+             | |__ | |\/| | | |_| |     | (__  | |\/| | \__ \  | |  
+             |____||_|  |_|  \___/       \___| |_|  |_| |___/ |___| 
+
+                       Rule #1: Read The Manual.
+                       Rule #2: Google Is Your Friend.
+
+              - Manage Your Account:  https://secure.cs.lmu.edu
+              - Change Password via Command Line: yppasswd
+              - BASH Quick Reference: http://www.cs.lmu.edu/bash.pdf
+              - VIM  Quick Reference: http://www.cs.lmu.edu/vim.pdf
+              - Printer Drivers:      http://www.cs.lmu.edu/drivers
+              - How To List Files: ls, ls -la
+              - How To Change Directories: cd [directory-name]
+              - How To Edit Files: nano, vim, emacs
+              - (Win) How To Transfer Files: WinSCP, Filezilla
+              - (Win) How To SSH Remotely: Putty, Cygwin
+              - (Mac) How To Transfer Files: Filezilla, Cyberduck, Fugu
+              - (Mac) How To SSH Remotely: Terminal
+
+Last login: Wed Jan 22 23:34:45 2014 from cpe-23-241-186-214.socal.res.rr.com
+aalzaid1@ab201:~$ mkdir ~/repos/
+mkdir: cannot create directory `/nfs/home/aalzaid1/repos/': File exists
+aalzaid1@ab201:~$ ls
+cmsi370  Documents  Music     Public       repos  Templates
+Desktop  Downloads  Pictures  public_html  rpg    Videos
+aalzaid1@ab201:~$ cd repos
+aalzaid1@ab201:~/repos$ GIT_DIR=project.git git init
+Reinitialized existing Git repository in /nfs/home/aalzaid1/repos/project.git/
+aalzaid1@ab201:~/repos$ cd project.git
+aalzaid1@ab201:~/repos/project.git$ git --bare update-server-info
+aalzaid1@ab201:~/repos/project.git$ cp hooks/post-update.sample hooks/post-update
+aalzaid1@ab201:~/repos/project.git$ logout
+Connection to my.cs.lmu.edu closed.
+Abduls-MacBook-Pro:~ AbdulZaid$ ls
+2.28.circ	Desktop		GoideProjects	Music		Subtractor.circ
+3.19.circ	Documents	Google Drive	Pictures	catTrial.txt
+Applications	Downloads	Library		Public		project
+Conduit		Dropbox		Movies		R Console	tmp
+Abduls-MacBook-Pro:~ AbdulZaid$ cd Desktop/
+Abduls-MacBook-Pro:Desktop AbdulZaid$ cd secondRepo
+Abduls-MacBook-Pro:secondRepo AbdulZaid$ git clone aalzaid1@my.cs.lmu.edu:~/repos/project.git
+Cloning into 'project'...
+aalzaid1@my.cs.lmu.edu's password: 
+warning: You appear to have cloned an empty repository.
+Abduls-MacBook-Pro:secondRepo AbdulZaid$ touch README
+Abduls-MacBook-Pro:secondRepo AbdulZaid$ git add README
+fatal: Not a git repository (or any of the parent directories): .git
+Abduls-MacBook-Pro:secondRepo AbdulZaid$ ls
+README	project
+Abduls-MacBook-Pro:secondRepo AbdulZaid$ ls -a
+.		..		.DS_Store	README		project
+Abduls-MacBook-Pro:secondRepo AbdulZaid$ cd project
+Abduls-MacBook-Pro:project AbdulZaid$ ls
+Abduls-MacBook-Pro:project AbdulZaid$ touch README
+Abduls-MacBook-Pro:project AbdulZaid$ git add README
+Abduls-MacBook-Pro:project AbdulZaid$ git commit -m "Example."
+[master (root-commit) d28647f] Example.
+ 0 files changed
+ create mode 100644 README
+Abduls-MacBook-Pro:project AbdulZaid$ git push
+aalzaid1@my.cs.lmu.edu's password: 
+No refs in common and none specified; doing nothing.
+Perhaps you should specify a branch such as 'master'.
+fatal: The remote end hung up unexpectedly
+error: failed to push some refs to 'aalzaid1@my.cs.lmu.edu:~/repos/project.git'
+Abduls-MacBook-Pro:project AbdulZaid$ git push origin master
+aalzaid1@my.cs.lmu.edu's password: 
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 210 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To aalzaid1@my.cs.lmu.edu:~/repos/project.git
+ * [new branch]      master -> master
+Abduls-MacBook-Pro:project AbdulZaid$ ssh aalzaid1@my.cs.lmu.edu
+aalzaid1@my.cs.lmu.edu's password: 
+Welcome to Ubuntu 11.10 (GNU/Linux 3.0.0-12-server x86_64)
+
+ * Documentation:  https://help.ubuntu.com/11.10/serverguide/C
+
+  System information as of Thu Jan 23 12:27:05 PST 2014
+
+  System load:    0.04              Processes:           136
+  Usage of /home: 1.4% of 45.83GB   Users logged in:     5
+  Memory usage:   27%               IP address for eth0: 157.242.71.21
+  Swap usage:     0%
+
+  Graph this data and manage this system at https://landscape.canonical.com/
+New release '12.04 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+              _     __  __   _   _        ___   __  __   ___   ___  
+             | |   |  \/  | | | | |      / __| |  \/  | / __| |_ _| 
+             | |__ | |\/| | | |_| |     | (__  | |\/| | \__ \  | |  
+             |____||_|  |_|  \___/       \___| |_|  |_| |___/ |___| 
+
+                       Rule #1: Read The Manual.
+                       Rule #2: Google Is Your Friend.
+
+              - Manage Your Account:  https://secure.cs.lmu.edu
+              - Change Password via Command Line: yppasswd
+              - BASH Quick Reference: http://www.cs.lmu.edu/bash.pdf
+              - VIM  Quick Reference: http://www.cs.lmu.edu/vim.pdf
+              - Printer Drivers:      http://www.cs.lmu.edu/drivers
+              - How To List Files: ls, ls -la
+              - How To Change Directories: cd [directory-name]
+              - How To Edit Files: nano, vim, emacs
+              - (Win) How To Transfer Files: WinSCP, Filezilla
+              - (Win) How To SSH Remotely: Putty, Cygwin
+              - (Mac) How To Transfer Files: Filezilla, Cyberduck, Fugu
+              - (Mac) How To SSH Remotely: Terminal
+
+Last login: Thu Jan 23 12:21:35 2014 from 10.22.141.2
+aalzaid1@ab201:~$ ls
+cmsi370  Documents  Music     Public       repos  Templates
+Desktop  Downloads  Pictures  public_html  rpg    Videos
+aalzaid1@ab201:~$ cd repos
+aalzaid1@ab201:~/repos$ ls
+project.git
+aalzaid1@ab201:~/repos$ cd project.git
+aalzaid1@ab201:~/repos/project.git$ ls
+branches  config  description  HEAD  hooks  info  objects  refs
+aalzaid1@ab201:~/repos/project.git$ git pull
+fatal: /usr/lib/git-core/git-pull cannot be used without a working tree.
+aalzaid1@ab201:~/repos/project.git$ cd ..
+aalzaid1@ab201:~/repos$ git clone project.git project
+Cloning into project...
+done.
+aalzaid1@ab201:~/repos$ ls
+project  project.git
+aalzaid1@ab201:~/repos$ cd project
+aalzaid1@ab201:~/repos/project$ ls
+README
+aalzaid1@ab201:~/repos/project$ pwd
+/nfs/home/aalzaid1/repos/project
+aalzaid1@ab201:~/repos/project$ logout
+Connection to my.cs.lmu.edu closed.
+Abduls-MacBook-Pro:project AbdulZaid$ cd ..
+Abduls-MacBook-Pro:secondRepo AbdulZaid$ cd ..
+Abduls-MacBook-Pro:Desktop AbdulZaid$ cd smci387
+-bash: cd: smci387: No such file or directory
+Abduls-MacBook-Pro:Desktop AbdulZaid$ cd cmsi387
+Abduls-MacBook-Pro:cmsi387 AbdulZaid$ ls
+homework
+Abduls-MacBook-Pro:cmsi387 AbdulZaid$ cd homework
+Abduls-MacBook-Pro:homework AbdulZaid$ ls
+shell-guide
+Abduls-MacBook-Pro:homework AbdulZaid$ scp shell-guide
+
+usage: scp [-12346BCEpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
+           [-l limit] [-o ssh_option] [-P port] [-S program]
+           [[user@]host1:]file1 ... [[user@]host2:]file2
+Abduls-MacBook-Pro:homework AbdulZaid$ 
+Abduls-MacBook-Pro:homework AbdulZaid$ scp shell-guide aalzaid1@my.cs.lmu.edu:~//nfs/home/aalzaid1/repos/project
+aalzaid1@my.cs.lmu.edu's password: 
+shell-guide: not a regular file
+Abduls-MacBook-Pro:homework AbdulZaid$ scp -r shell-guide aalzaid1@my.cs.lmu.edu:~//nfs/home/aalzaid1/repos/project
+aalzaid1@my.cs.lmu.edu's password: 
+scp: /nfs/home/aalzaid1//nfs/home/aalzaid1/repos/project: No such file or directory
+Abduls-MacBook-Pro:homework AbdulZaid$ scp -r shell-guide aalzaid1@my.cs.lmu.edu:~/nfs/home/aalzaid1/repos/project
+aalzaid1@my.cs.lmu.edu's password: 
+scp: /nfs/home/aalzaid1/nfs/home/aalzaid1/repos/project: No such file or directory
+Abduls-MacBook-Pro:homework AbdulZaid$ scp -r shell-guide aalzaid1@my.cs.lmu.edu:~/aalzaid1/repos/project
+aalzaid1@my.cs.lmu.edu's password: 
+scp: /nfs/home/aalzaid1/aalzaid1/repos/project: No such file or directory
+Abduls-MacBook-Pro:homework AbdulZaid$ scp -r shell-guide aalzaid1@my.cs.lmu.edu:~/repos/project
+aalzaid1@my.cs.lmu.edu's password: 
+.DS_Store                                     100% 6148     6.0KB/s   00:00    
+command-crib-sheet.pdf                        100%   70KB  69.6KB/s   00:00    
+names-and-symbols.pdf                         100%   45KB  45.2KB/s   00:00    
+Abduls-MacBook-Pro:homework AbdulZaid$ ssh aalzaid1@my.cs.lmu.edu
+aalzaid1@my.cs.lmu.edu's password: 
+Welcome to Ubuntu 11.10 (GNU/Linux 3.0.0-12-server x86_64)
+
+ * Documentation:  https://help.ubuntu.com/11.10/serverguide/C
+
+  System information as of Thu Jan 23 12:34:08 PST 2014
+
+  System load:    0.0               Processes:           136
+  Usage of /home: 1.4% of 45.83GB   Users logged in:     5
+  Memory usage:   27%               IP address for eth0: 157.242.71.21
+  Swap usage:     0%
+
+  Graph this data and manage this system at https://landscape.canonical.com/
+New release '12.04 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+              _     __  __   _   _        ___   __  __   ___   ___  
+             | |   |  \/  | | | | |      / __| |  \/  | / __| |_ _| 
+             | |__ | |\/| | | |_| |     | (__  | |\/| | \__ \  | |  
+             |____||_|  |_|  \___/       \___| |_|  |_| |___/ |___| 
+
+                       Rule #1: Read The Manual.
+                       Rule #2: Google Is Your Friend.
+
+              - Manage Your Account:  https://secure.cs.lmu.edu
+              - Change Password via Command Line: yppasswd
+              - BASH Quick Reference: http://www.cs.lmu.edu/bash.pdf
+              - VIM  Quick Reference: http://www.cs.lmu.edu/vim.pdf
+              - Printer Drivers:      http://www.cs.lmu.edu/drivers
+              - How To List Files: ls, ls -la
+              - How To Change Directories: cd [directory-name]
+              - How To Edit Files: nano, vim, emacs
+              - (Win) How To Transfer Files: WinSCP, Filezilla
+              - (Win) How To SSH Remotely: Putty, Cygwin
+              - (Mac) How To Transfer Files: Filezilla, Cyberduck, Fugu
+              - (Mac) How To SSH Remotely: Terminal
+
+Last login: Thu Jan 23 12:27:05 2014 from 10.22.141.2
+aalzaid1@ab201:~$ ls
+cmsi370  Documents  Music     Public       repos  Templates
+Desktop  Downloads  Pictures  public_html  rpg    Videos
+aalzaid1@ab201:~$ cd repos
+aalzaid1@ab201:~/repos$ ls
+project  project.git
+aalzaid1@ab201:~/repos$ cd project
+aalzaid1@ab201:~/repos/project$ ls
+README  shell-guide
+aalzaid1@ab201:~/repos/project$ git statues
+git: 'statues' is not a git command. See 'git --help'.
+
+Did you mean this?
+	status
+aalzaid1@ab201:~/repos/project$ git status
+# On branch master
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	shell-guide/
+nothing added to commit but untracked files present (use "git add" to track)
+aalzaid1@ab201:~/repos/project$ git add shell-guide
+aalzaid1@ab201:~/repos/project$ git commit -m "adding Hw to server"
+[master 42ac102] adding Hw to server
+ Committer: Abdul Alzaid <aalzaid1@ab201.cs.lmu.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 shell-guide/.DS_Store
+ create mode 100644 shell-guide/command-crib-sheet.pdf
+ create mode 100644 shell-guide/names-and-symbols.pdf
+aalzaid1@ab201:~/repos/project$ git push origin master
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 110.74 KiB, done.
+Total 6 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (6/6), done.
+To /nfs/home/aalzaid1/repos/project.git
+   d28647f..42ac102  master -> master
+aalzaid1@ab201:~/repos/project$ git status
+# On branch master
+nothing to commit (working directory clean)
+aalzaid1@ab201:~/repos/project$ pwd
+/nfs/home/aalzaid1/repos/project
+aalzaid1@ab201:~/repos/project$ ls
+README  shell-guide
+aalzaid1@ab201:~/repos/project$ pwd
+/nfs/home/aalzaid1/repos/project
+aalzaid1@ab201:~/repos/project$ 
