@@ -2,7 +2,8 @@
 ==========================
 
 - Windows: 
-    - NOTE: windows-kernel.jpg and windows-pre-os-process.jpg came from Geoff, `ThatHalfKorean`  
+    - NOTE: Due to your apporval when Carlos asked you, the "windows-kernel.jpg" and "windows-pre-os-process.jpg" came from Geoffory.
+    
     - All my imagefiles display the command and results needed
 
 - Mac:
