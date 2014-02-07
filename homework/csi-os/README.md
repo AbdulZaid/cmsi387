@@ -1,6 +1,8 @@
 ::::README for CSI- OS::::
 ==========================
 
+For every part of the assignment, the related images are put into a folder named after the task name. For example, "Kernel file" has the Kernel images for each of the operating systems. 
+
 - Windows: 
     - NOTE: Due to your apporval when Carlos asked you, the "windows-kernel.jpg" and "windows-pre-os-process.jpg" came from Geoffory.
     
