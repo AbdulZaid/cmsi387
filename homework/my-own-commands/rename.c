@@ -19,6 +19,9 @@ int main(int argc, char *argv[]) {
         // Don't use this error message in "real" programs. O_o
         char *errorMessage = "This renaming is wrong\n";
         syscall(4, 2, errorMessage, strlen(errorMessage));
+    } else if (result == 0) {
+        char *errorMessage = "This renaming is right\n";
+        syscall(4, 2, errorMessage, strlen(errorMessage));
     }
 
 }
