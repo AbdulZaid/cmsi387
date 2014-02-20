@@ -20,8 +20,8 @@ int main(int argc, char *argv[]) {
         char *errorMessage = "This renaming is wrong\n";
         syscall(4, 2, errorMessage, strlen(errorMessage));
     } else if (result == 0) {
-        char *errorMessage = "This renaming is right\n";
-        syscall(4, 2, errorMessage, strlen(errorMessage));
+        char *completionMessage = "This renaming is right\n";
+        syscall(4, 2, completionMessage, strlen(completionMessage));
     }
 
 }
