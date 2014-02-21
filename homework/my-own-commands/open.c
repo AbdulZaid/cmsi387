@@ -1,10 +1,10 @@
 /*
  ** Abdul Alzaid
  ** CMSI387: Operating System
- ** chmod.c
+ ** open.c
  **
  ** This program demonstrates invocation of the sysinfo system call
- ** (116) using the syscall function.  Some of its output is then displayed.
+ ** (5) using the syscall function.  Some of its output is then displayed.
  **
  ** Contributions made by Jonathan Piatos, Carlos Agudo, and Abdul Alzaid.
  **
