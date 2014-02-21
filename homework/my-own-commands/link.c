@@ -1,22 +1,25 @@
-/**
- * This program demonstrates invocation of the mkdir
- * system call (9) using the syscall function.
+
+/*
+ **
+ ** CMSI387: Operating System
+ ** link.c
+ **
+ ** Description: This program demonstrates invocation of the link
+ ** system call (9) using the syscall function.
+ **
+ ** Contributions made by Jonathan Piatos, Carlos Agudo, and Abdul Alzaid.
+ **
  */
+
 #include <linux/types.h>
 #include <linux/unistd.h>
 #include <string.h>
 
 int main(int argc, char *argv[]) {
-    // We demonstrate the use of command-line arguments here.
-    // But note the non-existent error handling (all the better
-    // to illustrate the error code below).
     
     int result = syscall(9, argv[1], argv[2]);
     
-    // A result of -1 means that something went wrong.  Otherwise,
-    // check for your new directory!
     if (result == -1) {
-        // Don't use this error message in "real" programs. O_o
         char *errorMessage = "This renaming is wrong\n";
         syscall(4, 2, errorMessage, strlen(errorMessage));
     } else if (result == 0) {
