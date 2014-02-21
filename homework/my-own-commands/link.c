@@ -1,6 +1,6 @@
 
 /*
- **
+ ** Abdul Alzaid.
  ** CMSI387: Operating System
  ** link.c
  **

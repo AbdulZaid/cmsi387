@@ -1,6 +1,6 @@
 /**
  * This program demonstrates invocation of the rmdir
- * system call (39) using the syscall function.
+ * system call (40) using the syscall function.
  */
 #include <linux/types.h>
 #include <linux/unistd.h>
