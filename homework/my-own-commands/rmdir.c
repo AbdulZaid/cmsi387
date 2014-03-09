@@ -18,7 +18,9 @@ int main(int argc, char *argv[]) {
     char *successMessage = "You are Successful\n";
     syscall(4, 2, successMessage, strlen(successMessage));
   } if (result == -1) {
-    char *errorMessage = "You are wrond my friend.\n";
+    char *errorMessage = "You are wrond my friend.\n"; // JD: Typo.
+    // JD: Plus, I don't know if stating that the user is "wrong" is
+    //     the best way to phrase an error in invoking rmdir.
     syscall(4, 2, errorMessage, strlen(errorMessage));
   }
 
