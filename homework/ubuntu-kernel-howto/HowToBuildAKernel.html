@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<!-- viewport meta to reset iPhone inital scale -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kernel System Call</title>
+
+<!-- css3-mediaqueries.js for IE8 or older -->
+<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+
+<style type="text/css">
+
+body {
+	font: 1em/150% Arial, Helvetica, sans-serif;
+}
+a {
+    position: relative;
+    left: 10px;
+	color: #669;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+h1 {
+	font: bold 36px/100% Arial, Helvetica, sans-serif;
+	text-align: center; 
+}
+h2,h3,p{
+	padding: 6px;
+}
+span {
+    position: relative;
+    left: 40px;
+    font-style: italic;
+    font-size: small;
+    font-family: monospace;
+    background-color: beige;
+}
+/********** STRUCTURE **********/
+#pagewrap {
+	padding: 5px;
+	width: 960px;
+	margin: 20px auto;
+}
+#header {
+	height: 180px;
+    background-color: antiquewhite;
+}
+#content {
+	width: 600px;
+	float: left;
+}
+#sidebar {
+	width: 300px;
+	float: right;
+}
+
+
+/********** MEDIA QUERIES **********/
+/* for 980px or less */
+@media screen and (max-width: 980px) {
+	
+	#pagewrap {
+		width: 94%;
+	}
+	#content {
+		width: 65%;
+	}
+	#sidebar {
+		width: 30%;
+	}
+
+}
+
+/* for 700px or less */
+@media screen and (max-width: 700px) {
+
+	#content {
+		width: auto;
+		float: none;
+	}
+	#sidebar {
+		width: auto;
+		float: none;
+	}
+
+}
+
+/* for 480px or less */
+@media screen and (max-width: 480px) {
+
+	#header {
+		height: auto;
+	}
+	h1 {
+		font-size: 24px;
+	}
+	#sidebar {
+		display: none;
+	}
+
+}
+
+/* border & guideline (you can ignore these) */
+#content {
+	background: #f8f8f8;
+}
+#sidebar {
+	background: #f0efef;
+}
+#header, #content, #sidebar {
+	margin-bottom: 5px;
+}
+#header, #content, #sidebar, #footer {
+	border: solid 1px #ccc;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="pagewrap">
+
+	<div id="header">
+		<h1>HOW TO MAKE A KERNEL SYSTEM CALL By Abdul Alzaid</h1>
+		<p>Here is a short tutorial on how to add a Simple System Call to the Linux Kernel, starting by using a VirtualBox and whatever latest Ubuntu version out there.</p>
+	</div>
+
+	<div id="content">
+		<h2>The folowing include all the steps needed to complete the process, and on the sidebar there are links to pages that have images to what each step do.</h2>
+        <h3>git</h3>
+		<p>Since we're going to use the latest Ubuntu versions we will use the command "git." Also the source files for each release is maintained in its own git repositoy On kernel.ubuntu.com. To obtain a local copy you can simply git clone the repository for the release you are interested in as shown below.</p>
+		<span>git clone git://kernel.ubuntu.com/ubuntu/ubuntu-"release".git</span>
+        <p>In the case that we will show we are using ubuntu trusty.</p>
+		<span>git clone git://kernel.ubuntu.com/ubuntu/ubuntu-trusty.git</span>
+		<h3>Building the Environment</h3>
+		<p>If you have never built a kernel before in your system, then you can get these installed with</p>
+        <span>sudo apt-get build-dep linux-image-$(uname -r)</span>
+		<h3>Building the kernel</h3>
+		<p>Now focus, cuz this is simple! Go to your root directory to the root of  the kernel source tree and then type the following commands:</p>
+        <span>fakeroot debian/rules clean</br> fakeroot debian/rules binary-headers binary-generic</span>
+		<p>Now be petient, because this will take time!!! Once it's done do the folowing to test out if it built successfully or not.</p>
+        <span>cd ..<br> ls *.deb<br>linux-headers-2.6.38-7_2.6.38-7.37_all.deb<br>
+            linux-headers-2.6.38-7-generic_2.6.38-7.37_amd64.deb<br>
+            linux-image-2.6.38-7-generic_2.6.38-7.37_amd64.deb</span>
+        <h3>Testing the new kernel</h3>
+		<p>Now install the three-package set on your build system.</p>
+        <span>sudo dpkg -i linux*2.6.38-7.37*.deb<br>sudo reboot</span>
+		<p>Once you rebooted the system you should be able to to run the new ubuntu you built.  Then from there we will be adding the new system call and test it out.  So go ahead and run the new Ubuntu, and follow the next steps</p>
+        <h3>Adding a syscall</h3>
+		<p>Go to the directory where the intalled ubuntu-trusty is, Then from there go to this directory and open the file syscall_32.tbl to edit the sys table</p>
+        <span>arch/x86/syscall/syscall_32.tbl</span>
+		<p>Scroll all the way down and add the system call at the end of the syscalls list.  The way we did it here is as follows, or check out the image for better look.</p>
+        <span>351&nbsp;&nbsp;&nbsp;&nbsp; i386&nbsp;&nbsp;&nbsp;&nbsp; opsyscall&nbsp;&nbsp;&nbsp;&nbsp; sys_opsyscall</span>
+		<p>Then go this directory, and open the file "syscalls.h" to edit the header file.</p>
+        <span>include/linux/syscalls.h</span>
+
+		<p>Then scroll all the way down to the end of the file, and just before it says #endif add the following prototype</p>
+        <span>asmlinkeage long sys_opsyscall(const char *test);</span>
+        <p>Now that we edited the major two files we go and create a folder in the ubuntu-trusty directory.  Call that file whatever you want, or as we did "opsyscall" by using "mkdir".  Then go to that directory and create a C file and call it "syscall.c".</p>
+        <span>#include <linux/kernel.h><br>#include <linux/syscalls.h><br> //the system call<br> asmlinkeage long sys_opsyscall(const char *test) {<br> printk(KERN_ALERT "Called with string:%s\n", test);<br> //return 0 for success.<br>return 0;<br>}</span>
+        <p>save and exit</p>
+        <p>After you saved, now it's time to add a new file and call it "Makefile" with no extension.  Open the file and this line of code.</p>
+        <span># Include the object<br> obj-y := syscall.o</span>
+		<p>Now save and go the Ubuntu-trusty directory and open and edit the original "Makefile" there. Go and find where it says "core-y &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := usr/&nbsp;&nbsp;&nbsp;&nbsp;" and after that add the directory where we created the the C and Makefile, your extension should look like the following:</p>
+        <span>core-y &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := usr/ &nbsp;opsyscall/</span>
+        <p>After that we run "make" and this will take time too. Go have a cup of coffee.</p>
+        <p>Once the make call finishes we run "make install", then we "reboot".</p>
+        <p>After you reboot, go and make a C file in the desktop to test our syscall, we called here "userspace" then add the following code</p>
+        <span>#include <linux/unistd.h><br> int main() {<br> syscall(351, "Yes we did it");<br> //return 0 for success.<br>return 0;<br>}</span>
+		<p>Then save and exit. After that go compile the program</p>
+        <span>gcc -o test userspace.c<br> ./test</span>
+        <p>Then cat to this file " /var/log/syslog" to see the message of success at the bottom</p>
+        
+        <p>YOURE DONE NOW, CONGRATS!!!</p>
+    </div>
+
+	<div id="sidebar">
+		<h3>Here are the Images for each step, please click on each one to see the images.</h3>
+		<a href="../ubuntu-kernel-howto/git/git.html">git</a></br>
+		<a href="../ubuntu-kernel-howto/building-the-environment/building-the-environment.html">Building the Environment</a></br>
+		<a href="../ubuntu-kernel-howto/building-the-kernel/building-the-kernel.html">Building the kernel</a></br>
+		<a href="../ubuntu-kernel-howto/testing-the-new-kernel/testing-the-new-kernel.html">Testing the new kernel</a></br>
+		<a href="../ubuntu-kernel-howto/adding-syscall/adding-syscall.html">Adding a syscall</a>
+
+	</div>
+	
+
+</div>
+
+</body>
+</html>
