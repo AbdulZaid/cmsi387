@@ -1,14 +1,14 @@
-/*
- ** Abdul Alzaid.
- ** CMSI387: Operating System
- ** sysinfo.c
- **
- ** Description: This program demonstrates invocation of the sysinfo
- ** system call (116) using the syscall function.
- **
- ** Contributions made by Abdul Alzaid, Carlos Agudo, and Jonathan Piatos
- **
- */
+/* 
+**
+** CMSI387: Operating System
+** sysinfo.c
+**
+** Description: This program demonstrates invocation of the sysinfo
+** system call (116) using the syscall function. 
+**
+** Contributions made by Abdul Alzaid, Carlos Agudo, and Jonathan Piatos
+** 
+*/
 
 #include <linux/kernel.h>
 #include <linux/types.h>
@@ -16,8 +16,8 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-    
-    
+
+
     struct sysinfo result;
     syscall(116, &result);
     
