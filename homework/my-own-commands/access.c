@@ -13,18 +13,22 @@
 #include <linux/kernel.h>
 #include <linux/types.h>
 #include <linux/unistd.h>
-#include <unistd.h>
+#include <unistd.h> 
 #include <string.h>
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-    
+
     //Only check access for read only
     int result = syscall(33, argv[1], R_OK);
-    
+
     if (result == 0) {
-    	//message used simply for testing the syscall
-        char *successMessage = "Read Access is Granted\n";
+
+        char *successMessage = "User Access Available\n";
         syscall(4, 2, successMessage, strlen(successMessage));
+    } else if (result == -1) {
+        char *failureMessage = "User Access Unavailable\n";
+        syscall(4, 2, failureMessage, strlen(failureMessage));
     }
+
 }
