@@ -1,7 +1,8 @@
 “CSI: Process"
 =============
-**Part 1.**
-BOTH UNDER THE FOLDER  "first-part" 
+**TASK 1**
+
+**BOTH SYSTEM IMAGES ARE UNDER THE FOLDER  "first-part"**
 
 ***The process was used during the compilation of the Sum program was "ping localhost."***
 
@@ -12,3 +13,24 @@ BOTH UNDER THE FOLDER  "first-part"
 *Mac OS X*
 
     first-screenshot.png
+
+**TASK 2**
+
+**BOTH SYSTEM IMAGES ARE UNDER THE FOLDER  "second-part"**
+
+*Linux*
+
+    Linux1.png
+         .
+         .
+         .
+         .
+         
+    linux5.png
+    
+*Mac OS X*
+
+    Activity-mac.png
+    
+    
+    
