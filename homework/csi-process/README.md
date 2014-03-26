@@ -45,5 +45,4 @@ different, also they are different in displaying the threads.
 ***A similarity between the two systems, is that the number of threads is updated as the process is being run.  That means the individual threads are deleted as necessary, when the arguments are being added to Sum.java.
 
 
-***Both operating systems doesn't allow the threads to exist if they are no longer needed. Finally, The only difference
-here is that on Mac, the display is a live display whereas on Linux the command has to be run over again to see the update in the number of threads.
+***Both operating systems doesn't allow the threads to exist if they are no longer needed. Finally, on Mac the display is a live display whereas on Linux the command has to be run over again to see the update in the number of threads.
