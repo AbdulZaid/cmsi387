@@ -12,7 +12,6 @@ int main() {
     char command[256];
     char *args[256];
     int i;
-    int lengthOfCommand = strlen(command);
 
     //"feof", checks whether the end-of-File indicator associated with stream is set, 
     //returning a value different from zero if it is.
@@ -24,9 +23,10 @@ int main() {
         char *saveptr; // The saveptr argument is a pointer to a char * variable that is used internally by strtok_r()
         printf("Please Enter the command you want to run: ");
         
-        //reads a line from the specified stream and stores it into the string pointed to by command.
+        //reads a line from the specified stream "stdin" and stores it into the string pointed to by command.
         fgets(command, 256, stdin);
 
+        int lengthOfCommand = strlen(command);
 
         // Change newline to terminating 0
         command[lengthOfCommand - 1] = 0;
@@ -39,7 +39,7 @@ int main() {
 
         }
 
-        // Check if we need to strip off the "&" from the command or last argument
+        // Check if we need to remove the "&" from the passed in command or from the last argument
         if(strcmp(&command[lengthOfCommand - 2], ampersandChar) == 0) {
 
             command[lengthOfCommand - 2] = 0;
