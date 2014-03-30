@@ -14,13 +14,17 @@ int main() {
     int i;
     int lengthOfCommand = strlen(command);
 
-    do {
-        const char *delimiter = " ";
+    //"feof", checks whether the end-of-File indicator associated with stream is set, 
+    //returning a value different from zero if it is.
+    while (!feof(stdin)) {
+        const char *delim = " ";
         const char *ampersandChar = "&";
-        bool waitCharacterPresent = false;
-        char *argument;
-        char *context;
+        bool ampersandPresent = false;
+        char *argument; 
+        char *saveptr; // The saveptr argument is a pointer to a char * variable that is used internally by strtok_r()
         printf("Please Enter the command you want to run: ");
+        
+        //reads a line from the specified stream and stores it into the string pointed to by command.
         fgets(command, 256, stdin);
 
 
@@ -28,10 +32,10 @@ int main() {
         command[lengthOfCommand - 1] = 0;
 
         // Remove any trailing spaces
-        while(strcmp(&command[lengthOfCommand - 2], delimiter) == 0) {
+        while(strcmp(&command[lengthOfCommand - 2], delim) == 0) {
 
             command[lengthOfCommand - 2] = 0;
-            lengthOfCommand--;
+            lengthOfCommand -= 1;
 
         }
 
@@ -39,14 +43,14 @@ int main() {
         if(strcmp(&command[lengthOfCommand - 2], ampersandChar) == 0) {
 
             command[lengthOfCommand - 2] = 0;
-            waitCharacterPresent = true;
+            ampersandPresent = true;
 
         }
         //"strtok_r" recommended to be used by Dondi. To extract tokens from strings.
-        for(argument = strtok_r(command, delimiter, &context), 
+        for(argument = strtok_r(command, delim, &saveptr), 
             i;
             argument;  
-        	argument = strtok_r(NULL, delimiter, &context), i++){
+        	argument = strtok_r(NULL, delim, &saveptr), i++){
                 // Save command and arguments, the command will be in args[0]
                 args[i] = argument;
         }
@@ -82,12 +86,12 @@ int main() {
             } else {
                 /* Parent process. */
                 int result;
-                if (!waitCharacterPresent) {
+                if (!ampersandPresent) {
                     wait(&result);
                 }
                 printf("All done; result = %d\n", result);
             }
         }
-    } while (!feof(stdin));
+    } 
     return 0;
 }
