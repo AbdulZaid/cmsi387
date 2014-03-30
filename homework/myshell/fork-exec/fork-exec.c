@@ -28,10 +28,10 @@ int main() {
 
         int lengthOfCommand = strlen(command);
 
-        // Change newline to terminating 0
+        // places zero to end newline.
         command[lengthOfCommand - 1] = 0;
 
-        // Remove any trailing spaces
+        // Removes the trailing spaces from the passed in command.
         while(strcmp(&command[lengthOfCommand - 2], delim) == 0) {
 
             command[lengthOfCommand - 2] = 0;
