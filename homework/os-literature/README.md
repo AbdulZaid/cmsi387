@@ -30,7 +30,7 @@ This example resulted in Howard solving this problem by adding or using addition
 
 ####The Second Article: "Efficient semaphore management using read/modify/write memory cycles" By Richard M. Weatherly and James F. Leathrum.
 
-(1)  This article by Richard M. Weatherly, and Jr. James F is directly related to the problem introduced by Dijkstra beause it deals with the issue of wasting the processor time.  Furthermore, as they have mentioned in their article that when an operation is attemted to be passed on a blicked semaphore, two things can happen "1) The blocked process remains active in a 'busy wait' condition continually testing the semaphore or 2) the process is deactivated freeing the processor to do other useful work." This can make unnecessary memory accesses by wasting the processor time and limiting the availability of the semaphore, and also, as discussed this 'busy wait' solution is undesirable.
+(1)  This article by Richard M. Weatherly, and Jr. James F is directly related to the problem introduced by Dijkstra beause it deals with the issue of wasting the processor time.  Furthermore, as they have mentioned in their article that when an operation is attemted to be passed on a blocked semaphore, two things can happen "1) The blocked process remains active in a 'busy wait' condition continually testing the semaphore or 2) the process is deactivated freeing the processor to do other useful work." This can make unnecessary memory accesses by wasting the processor time and limiting the availability of the semaphore, and also, as discussed this 'busy wait' solution is undesirable.
 
 
 (2)
