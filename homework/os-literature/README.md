@@ -1,4 +1,4 @@
-***All of Time and Space***
+#All of Time and Space
 
 
-*The First Article: "A new solution to the critical section problem"*
+####The First Article: "A new solution to the critical section problem" by Howard P. Katseff*
