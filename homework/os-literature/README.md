@@ -31,5 +31,7 @@ This example resulted in Howard solving this problem by adding or using addition
 ####The Second Article: "Efficient semaphore management using read/modify/write memory cycles" By Richard M. Weatherly and James F. Leathrum.
 
 (1)
+
 (2)
-(3)
+
+(3) The authors Richard M. Weatherly, and Jr. James F. Leathrum has a sum of 37 publications, the later is 17. However, this make the quality of this work good because the authors are published in the ACM which is a widely read Article Database. Both authors are have done their work at Clemson University. Finally, one more good thing I noticed, is that they take the time to set up the background explaining Dijkstra's problem, which makes you understand the underlying problem clearly and then introducing their new idea, and solutions.
