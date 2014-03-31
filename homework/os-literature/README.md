@@ -16,7 +16,7 @@ Continue our journey through seminal operating systems literature by using libra
   work. Consider the authors, the publication 
   venue, the level of detail, references cited, etc.
 
-####The First Article: "A new solution to the critical section problem" by Howard P. Katseff*
+####The First Article: "A new solution to the critical section problem" By Howard P. Katseff"
 
 (1) This article by Howard P. Katseff is directly related to our subject of Process Synchronization, and mainly on Critical Section Structure.  It is related because it's based on exapnding the solutions of Djiksta's, Knuth's, and Eisenberg and McGuire's solution. Moreover, as stated in the introduction "The solution presented here improves on previous solutions by allowing processes to enter their critical sections on a first-come first-served basis."
 
@@ -26,3 +26,10 @@ This example resulted in Howard solving this problem by adding or using addition
           
 
 (3) The author Howard Paul Katseff has 12 articles puplished on the ACM's Digital Library which shows how succesful and commited this person is to the academic research and discussion of computer science. He did graduate work in program size complexity at the University of California, Berkeley and received his Ph.D. in 1978. In 1978, he became a Member of Technical Staff at Bell Telephone Laboratories in Holmdel, New Jersey. This of course adds some weight to the paper.  He also as stated in the AT&T Researchers website, created sdb, the first debugger that allowed the use of source-language variable names, and he also developed algorithms for two-dimensional bin packing, and  pioneered work in multiprocessor computer systems, and now he's on top of the AT&T research team. Finally, as seen in his article, he does an amazing job of choosing the right test cases to show the problems with previous solutions.
+
+
+####The Second Article: "Efficient semaphore management using read/modify/write memory cycles" By Richard M. Weatherly and James F. Leathrum.
+
+(1)
+(2)
+(3)
