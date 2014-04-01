@@ -30,3 +30,9 @@ This example resulted in Howard solving this problem by adding or using addition
 Finally I want to share what they have concluded their article with, as it summarizes the idea that's been introduced, and discussed. They stated that "there are wait loops in this scheme. There are no busy waits, however. A process requesting access to a semaphore during Queue Pointer update knows it is waiting on a definite operation, taking a known length of time. Therefore, a wait period, in which other useful work may be done, can be calculated to give a good probability of success on the retry."
 
 (3)  The authors Richard M. Weatherly, and Jr. James F. Leathrum has a sum of 37 publications, the later is 17. However, this make the quality of this work good because the authors are published in the ACM which is a widely read Article Database. Both authors are have done their work at Clemson University. Finally, one more good thing I noticed, is that they take the time to set up the background explaining Dijkstra's problem, which makes you understand the underlying problem clearly and then introducing their new idea, and solutions.
+
+####The Third Article: 
+
+(1)  
+(2)  
+(3) 
