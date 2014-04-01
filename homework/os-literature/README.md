@@ -33,6 +33,8 @@ Finally I want to share what they have concluded their article with, as it summa
 
 ####The Third Article: "A simple solution to Lamport's concurrent programming problem with linear wait" By Boleslaw K. Szymanski.
 
-(1)  
+(1) The article by Boleslaw K. Szymanski is related to our discussion because it directly exapnds upon a new solution to Lamport's concurrent programming Problem using small shared variables that's been introduced by Gary Peterson. Moreover, the similarity between this solution and Peterson's is in the solution presented that solves the problesm of process failures and restarts. However, this solution solves the problem of read errors occuring during writes. 
+
 (2)  
+
 (3) The author Boleslaw K. Szymanski, has so many impressive work published in the ACM digital library.  The author has 129 publications, and has 563 citation count. Moreover, the quality of this paper is incredible, because the author used and refrenced many iconic papers. Also, what makes its quality good, is that he presents his solution as if the reader has never heard of the problem by elaborating clearly the underlying issues, and From there, the writer exapnds upon Peterson's solution. Finally, he includes many examples and figures to illustrate what he is trying to introduce as a solution.
