@@ -11,7 +11,15 @@ static pagetable *ptr = NULL; // ptr = "page table register"
 void setPageTable(pagetable *pt) {
     ptr = pt;
 }
-
+/*
+* logical-to-physical paged memory address translation.
+*/
 int getPhysical(int logical) {
-    // TODO
+	/**
+	 * The left most 4 bits and the right most four bits.
+	*/
+	int leftMostBits = ((logical & PAGEMASK) >> PAGEBITS);
+	int rightMostBits = (logical & PAGESIZE);
+
+    return (((ptr[leftMostBits].frame) << PAGEBITS) + rightMostBits);
 }
