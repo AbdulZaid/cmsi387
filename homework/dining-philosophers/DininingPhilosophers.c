@@ -21,9 +21,9 @@ pthread_mutex_t chopsticks[5];
 /**
  * This function lets us see a visual representation of our philosophers.
  */
-// void printPhilosophers () {
+void printPhilosophers () {
 
-// }
+}
 
 /**
  * This is taken from GitHub user Dondi's bounder buffer code.
@@ -34,6 +34,24 @@ int randomWait(int bound) {
     sleep(wait);
     return wait;
 }
+
+
+/**
+ *  This lets the philospher get a chopstick.
+*/ 
+void useChopstick (int chopstick) {
+	pthread_mutex_lock(&chopsticks[chopstick]);
+	chopstick_state[chopstick] += 1;
+}
+
+/**
+ *  This lets the philospher put down a chopstick.
+*/ 
+void putDownChopstick (int chopstick) {
+	pthread_mutex_unlock(&chopsticks[chopstick]);
+	chopstick_state[chopstick] -= 1;
+}
+
 
 int main () {
 	int i;
