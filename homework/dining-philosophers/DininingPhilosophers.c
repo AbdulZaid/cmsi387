@@ -1,0 +1,44 @@
+#include <pthread.h>
+#include <semaphore.h>
+
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
+
+#define TRUE 1
+#define HUNGRY 0
+#define EATING 1
+#define THINKING 2 
+
+//The number of philisophers.
+int philosopher_number[5];
+//The number of states.
+int philosopher_state[5];
+int chopstick_state[5];
+pthread_mutex_t chopsticks[5];
+
+/**
+ * This function lets us see a visual representation of our philosophers.
+ */
+// void printPhilosophers () {
+
+// }
+
+/**
+ * This is taken from GitHub user Dondi's bounder buffer code.
+ */
+
+int randomWait(int bound) {
+    int wait = rand() % bound;
+    sleep(wait);
+    return wait;
+}
+
+int main () {
+	int i;
+	pthread_t philosphers[5];
+
+	return 0;
+
+}
