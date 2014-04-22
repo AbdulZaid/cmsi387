@@ -1,6 +1,6 @@
 /**
  * Implementation of the software paging unit.
- */
+*/
 #include "addressTranslation.h"
 
 #include <stdio.h>
@@ -21,5 +21,12 @@ int getPhysical(int logical) {
 	int leftMostBits = ((logical & PAGEMASK) >> PAGEBITS);
 	int rightMostBits = (logical & PAGESIZE);
 
+	if (logical < 0 || logical >= 256) {
+        return ERR_OUT_OF_RANGE;
+    }
+
+	if (ptr[leftMostBits].valid == 0) {
+		return ERR_INVALID;
+	}
     return (((ptr[leftMostBits].frame) << PAGEBITS) + rightMostBits);
 }
