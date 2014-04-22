@@ -17,23 +17,15 @@ int philosopher_state[5];
 int chopstick_state[5];
 pthread_mutex_t chopsticks[5];
 
-/**
- * This function lets us see a visual representation of our philosophers.
- */
-void printPhilosophers () {
-
-}
 
 /**
  * This is taken from GitHub user Dondi's bounder buffer code.
  */
-
 int randomWait(int bound) {
     int wait = rand() % bound;
     sleep(wait);
     return wait;
 }
-
 
 /**
  *  This lets the philospher get a chopstick.
@@ -52,19 +44,11 @@ void putDownChopstick (int chopstick) {
 }
 
 /**
- * This lets the philospher think.
- */
-void think (int philosopher) {
-	randomWait(5);
-	philosopher_state[philosopher] = HUNGRY;
-}
-
-/**
  * This function lets a philosopher pick up some chopsticks.
  */
 void eat (int philosopher) {
 	useChopstick(philosopher);
-	useChopstick((philosopher + 1) % NUM);
+	useChopstick((philosopher + 1) % 5);
 	philosopher_state[philosopher] = EATING;
 	randomWait(5);
 }
@@ -72,16 +56,24 @@ void eat (int philosopher) {
 /**
  * This function lets a philosopher put down his chopsticks.
  */
-
-void doneEating (int philosopher) {
+void finishEating (int philosopher) {
 	putDownChopstick(philosopher);
-	putDownChopstick((philosopher + 1) % NUM);
+	putDownChopstick((philosopher + 1) % 5);
 	philosopher_state[philosopher] = THINKING;
 }
 
 /**
+ * This lets the philospher think.
+ */
+void think (int philosopher) {
+	randomWait(5);
+	philosopher_state[philosopher] = HUNGRY;
+}
+
+
+/**
  *  This function will let the philosophers eat and think.
- * This method was implemented by looking at: http://rosettacode.org/wiki/Dining_philosophers
+ *  This method was implemented by looking at: http://rosettacode.org/wiki/Dining_philosophers
  */ 
 void* philosophize (void* philosopher) {
 	int id = *(int*) philosopher;
@@ -93,14 +85,43 @@ void* philosophize (void* philosopher) {
 		} else if (philosopher_state[id] == HUNGRY) {
 			eat(id);
 		} else if (philosopher_state[id] == EATING) {
-			doneEating(id);
+			finishEating(id);
 		}
 	}
 }
+
+/**
+ * This function lets us see a visual representation of our philosophers.
+ */
+void printPhilosophers () {
+	int i;
+	for (i = 0; i < 5; i++) {
+		if (philosopher_state[i] == THINKING) {
+			printf("  0_0  ");
+		} else if (philosopher_state[i] == HUNGRY) {
+			printf("  -.-  ");
+		} else if (philosopher_state[i] == EATING) {
+			printf(" \\^0^/ ");
+		}
+	}
+	printf("\n");
+}
+
 int main () {
 	int i;
 	pthread_t philosphers[5];
 
-	return 0;
+	for (i = 0; i < 5; i++) {
+		philosopher_state[i] = THINKING;
+		philosopher_number[i] = i;
+		chopstick_state[i] = 0;
+		pthread_mutex_init(&chopsticks[i], NULL);
+		pthread_create(&philosphers[i], NULL, philosophize, &philosopher_number[i]);
+	}
 
+	/* join the threads. */
+	for (i = 0; i < 5; i++) {
+		pthread_join(philosphers[i], NULL);
+	}
+	return 0;
 }
