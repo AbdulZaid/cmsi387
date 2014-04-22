@@ -6,7 +6,6 @@
 #include <string.h>
 #include <stdio.h>
 
-#define TRUE 1
 #define HUNGRY 0
 #define EATING 1
 #define THINKING 2 
@@ -52,7 +51,52 @@ void putDownChopstick (int chopstick) {
 	chopstick_state[chopstick] -= 1;
 }
 
+/**
+ * This lets the philospher think.
+ */
+void think (int philosopher) {
+	randomWait(5);
+	philosopher_state[philosopher] = HUNGRY;
+}
 
+/**
+ * This function lets a philosopher pick up some chopsticks.
+ */
+void eat (int philosopher) {
+	useChopstick(philosopher);
+	useChopstick((philosopher + 1) % NUM);
+	philosopher_state[philosopher] = EATING;
+	randomWait(5);
+}
+
+/**
+ * This function lets a philosopher put down his chopsticks.
+ */
+
+void doneEating (int philosopher) {
+	putDownChopstick(philosopher);
+	putDownChopstick((philosopher + 1) % NUM);
+	philosopher_state[philosopher] = THINKING;
+}
+
+/**
+ *  This function will let the philosophers eat and think.
+ * This method was implemented by looking at: http://rosettacode.org/wiki/Dining_philosophers
+ */ 
+void* philosophize (void* philosopher) {
+	int id = *(int*) philosopher;
+	printPhilosophers();
+	while (1) {
+		printPhilosophers();
+		if (philosopher_state[id] == THINKING) {
+			think(id);
+		} else if (philosopher_state[id] == HUNGRY) {
+			eat(id);
+		} else if (philosopher_state[id] == EATING) {
+			doneEating(id);
+		}
+	}
+}
 int main () {
 	int i;
 	pthread_t philosphers[5];
