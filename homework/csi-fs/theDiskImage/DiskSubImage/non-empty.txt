@@ -1,0 +1,1 @@
+/home/abdul//cmsi387/homework//csi-fs/theDiskImage/non-empty.txt
