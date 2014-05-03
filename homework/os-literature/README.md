@@ -10,6 +10,11 @@ Continue our journey through seminal operating systems literature by using libra
 
 ####The First Article: "A new solution to the critical section problem" By Howard P. Katseff.
 
+> JD: I guess I made an assumption that you'd know to do this---when you are asked for any kind of
+>     "bibliography," the expectation is that you provide a full citation of the articles that you
+>     list.  You do provide further information in your writeup but really they should all go in
+>     one overall entry each.
+
 (1)  This article by Howard P. Katseff is directly related to our subject of Process Synchronization, and mainly on Critical Section Structure.  It is related because it's based on expanding the solutions of Djiksta's, Knuth's, and Eisenberg and McGuire's solution. Moreover, as stated in the introduction "The solution presented here improves on previous solutions by allowing processes to enter their critical sections on a first-come first-served basis."
 
 (2)  Howard's solution for first-come first-serve processes is very efficient. The reason is because it manages to solve  the problem where certain processes that might die (more than once) and emerge again may prevent other processes from entering their critical sections. Moreover, what makes Howard's solution more interesting, is that his way does not require variables which assume arbitrarily large values.
