@@ -9,11 +9,11 @@ Continue our journey through seminal operating systems literature by using libra
 • Give a brief assessment of the quality of the work. Consider the authors, the publication venue, the level of detail, references cited, etc.
 
 ####The First Article: "A new solution to the critical section problem" By Howard P. Katseff.
+(Citation)
 
-> JD: I guess I made an assumption that you'd know to do this---when you are asked for any kind of
->     "bibliography," the expectation is that you provide a full citation of the articles that you
->     list.  You do provide further information in your writeup but really they should all go in
->     one overall entry each.
+Proceeding
+STOC '78 Proceedings of the tenth annual ACM symposium on Theory of computing
+Pages 86-88 
 
 (1)  This article by Howard P. Katseff is directly related to our subject of Process Synchronization, and mainly on Critical Section Structure.  It is related because it's based on expanding the solutions of Djiksta's, Knuth's, and Eisenberg and McGuire's solution. Moreover, as stated in the introduction "The solution presented here improves on previous solutions by allowing processes to enter their critical sections on a first-come first-served basis."
 
@@ -26,6 +26,12 @@ This example resulted in Howard solving this problem by adding or using addition
 
 
 ####The Second Article: "Efficient semaphore management using read/modify/write memory cycles" By Richard M. Weatherly and James F. Leathrum.
+(Citation)
+
+Newsletter
+ACM SIGOPS Operating Systems Review
+Volume 16 Issue 1, January 1982 
+Pages 10 - 13 
 
 (1)  This article by Richard M. Weatherly, and Jr. James F is directly related to the problem introduced by Dijkstra because it deals with the issue of wasting the processor time.  Furthermore, as they have mentioned in their article that when an operation is attempted to be passed on a blocked semaphore, two things can happen "1) The blocked process remains active in a 'busy wait' condition continually testing the semaphore or 2) the process is deactivated freeing the processor to do other useful work." This can make unnecessary memory accesses by wasting the processor time and limiting the availability of the semaphore, and also, as discussed this 'busy wait' solution is undesirable.
 
@@ -37,6 +43,11 @@ Finally I want to share what they have concluded their article with, as it summa
 (3)  The authors Richard M. Weatherly, and Jr. James F. Leathrum has a sum of 37 publications, the later is 17. However, this make the quality of this work good because the authors are published in the ACM which is a widely read Article Database. Both authors are have done their work at Clemson University. Finally, one more good thing I noticed, is that they take the time to set up the background explaining Dijkstra's problem, which makes you understand the underlying problem clearly and then introducing their new idea, and solutions.
 
 ####The Third Article: "A simple solution to Lamport's concurrent programming problem with linear wait" By Boleslaw K. Szymanski.
+(Citation)
+
+Proceeding
+ICS '88 Proceedings of the 2nd international conference on Supercomputing
+Pages 621 - 626
 
 (1) The article by Boleslaw K. Szymanski is related to our discussion because it directly exapnds upon a new solution to Lamport's concurrent programming Problem using small shared variables that's been introduced by Gary Peterson. Moreover, the similarity between this solution and Peterson's is in the solution presented that solves the problesm of process failures and restarts. However, this solution solves the problem of read errors occuring during writes. 
 
