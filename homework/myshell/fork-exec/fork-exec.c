@@ -1,3 +1,6 @@
+// JD: It appears that you compiled your code with a C++ compiler, not pure C.
+//     Not necessarily wrong, but the fact that you say nothing about it and are
+//     ultimately using C++ for a couple of very subtle behaviors, is concerning.
 #include <sys/types.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -30,8 +33,11 @@ int main() {
 
         // places zero to end newline.
         command[lengthOfCommand - 1] = 0;
+        // JD: Watch out for if the user just hits Enter!
 
         // Removes the trailing spaces from the passed in command.
+        // JD: while, if, and for are not functions---thus it is better to put a space
+        //     between the keyword and the left parenthesis.
         while(strcmp(&command[lengthOfCommand - 2], delim) == 0) {
 
             command[lengthOfCommand - 2] = 0;
@@ -48,7 +54,8 @@ int main() {
         }
         //"strtok_r" recommended to be used by Dondi. To extract tokens from strings.
         for(argument = strtok_r(command, delim, &saveptr), 
-            i;
+            i; // JD: Something's missing here, and that's why your argument parsing
+               //     may be unreliable.
             argument;  
         	argument = strtok_r(NULL, delim, &saveptr), i++){
                 // Save command and arguments, the command will be in args[0]
@@ -81,8 +88,8 @@ int main() {
             } else if (pid == 0) {
                 /* Child process. */
                 printf("Running...\n");
-                execvp(args[0], args);
-
+                execvp(args[0], args); // JD: On some systems, this breaks because of
+                                       //     an issue that is 34 lines above this one.
             } else {
                 /* Parent process. */
                 int result;

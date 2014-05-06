@@ -1,0 +1,6 @@
+ls
+ls -l
+pwd
+cd ..
+pwd
+ps aux
