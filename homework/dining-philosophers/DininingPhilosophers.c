@@ -31,7 +31,10 @@ int randomWait(int bound) {
  *  This lets the philospher get a chopstick.
 */ 
 void useChopstick (int chopstick) {
+    // JD: TAAAAAAB below this line!!!
 	pthread_mutex_lock(&chopsticks[chopstick]);
+    // JD: Your error-checking code would go here, right before you alter the state of
+    //     the chopstick...
 	chopstick_state[chopstick] += 1;
 }
 
@@ -39,8 +42,12 @@ void useChopstick (int chopstick) {
  *  This lets the philospher put down a chopstick.
 */ 
 void putDownChopstick (int chopstick) {
+    // JD: ...and here also, right before you alter the state as well.
 	pthread_mutex_unlock(&chopsticks[chopstick]);
 	chopstick_state[chopstick] -= 1;
+    // JD: ^^^Plus, you should alter the state *before* you unlock---if you don't,
+    //     another thread can now interfere.  Always do your alterations inside
+    //     the critical section.
 }
 
 /**
@@ -70,6 +77,9 @@ void think (int philosopher) {
 	philosopher_state[philosopher] = HUNGRY;
 }
 
+// JD: You're calling printPhilosophers before you define it---you need a
+//     forward declaration.
+void printPhilosophers();
 
 /**
  *  This function will let the philosophers eat and think.
@@ -77,7 +87,10 @@ void think (int philosopher) {
  */ 
 void* philosophize (void* philosopher) {
 	int id = *(int*) philosopher;
-	printPhilosophers();
+	printPhilosophers(); // JD: You are calling this in multiple threads, and therefore there
+                         //     is a chance that the printf's will interleave.  To keep your
+                         //     output clean, you will need to synchronize on this (i.e., the
+                         //     display is itself a shared resource).
 	while (1) {
 		printPhilosophers();
 		if (philosopher_state[id] == THINKING) {
