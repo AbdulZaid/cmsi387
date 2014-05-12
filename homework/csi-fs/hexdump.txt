@@ -40,6 +40,10 @@ root@abdul-VirtualBox:/home/abdul/cmsi387/homework/csi-fs# hexdump -C image
 (END OF FIRST GROUP)
 
 * (Inode structure starts from here and ends up at 00001d80)
+
+# JD: Not clear what you mean by "inode structure."  It certainly does not
+#     end at 1d80---in fact there is an inode there.
+
 00001800  00 00 00 00 00 00 00 00  aa e9 5d 53 aa e9 5d 53  |..........]S..]S|
 00001810  aa e9 5d 53 00 00 00 00  00 00 00 00 00 00 00 00  |..]S............|
 00001820  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
@@ -66,6 +70,10 @@ root@abdul-VirtualBox:/home/abdul/cmsi387/homework/csi-fs# hexdump -C image
 (End of the inode structure).
 
 * ( The Directory Inode Start)
+
+# JD: I don't think this is a directory inode.  This refers to data block
+#     1c, which upon lookup certainly does not look like directory data.
+
 00001d80  a4 81 00 00 82 00 00 00  eb ea 5d 53 ea ea 5d 53  |..........]S..]S|
 00001d90  ea ea 5d 53 00 00 00 00  00 00 01 00 02 00 00 00  |..]S............|
 00001da0  00 00 00 00 00 00 00 00  1c 00 00 00 00 00 00 00  |................|
@@ -76,6 +84,10 @@ root@abdul-VirtualBox:/home/abdul/cmsi387/homework/csi-fs# hexdump -C image
 (END of Directory Inode)
 
 (The non-empty.txt Inode Start)
+
+# JD: Again, your labeling does not match the data.  Data block 1d does not
+#     look like a text file.
+
 00001e00  ed 41 00 00 00 04 00 00  a6 eb 5d 53 52 ed 5d 53  |.A........]SR.]S|
 00001e10  52 ed 5d 53 00 00 00 00  00 00 02 00 02 00 00 00  |R.]S............|
 00001e20  00 00 00 00 00 00 00 00  1d 00 00 00 00 00 00 00  |................|
@@ -87,6 +99,9 @@ root@abdul-VirtualBox:/home/abdul/cmsi387/homework/csi-fs# hexdump -C image
 
 
 (The non-empty-two.txt Inode, and The Hard Links to it.) (Start)
+
+# JD: OK, this one matches.
+
 00001e80  a4 81 00 00 1e 00 00 00  97 ed 5d 53 96 ed 5d 53  |..........]S..]S|
 00001e90  9d eb 5d 53 00 00 00 00  00 00 02 00 02 00 00 00  |..]S............|
 00001ea0  00 00 00 00 00 00 00 00  1e 00 00 00 00 00 00 00  |................|
@@ -98,6 +113,9 @@ root@abdul-VirtualBox:/home/abdul/cmsi387/homework/csi-fs# hexdump -C image
 
 
 (The Inode for the Symbolic link of non-empty.txt)
+
+# JD: And this.
+
 00001f00  ff a1 00 00 40 00 00 00  52 ed 5d 53 52 ed 5d 53  |....@...R.]SR.]S|
 00001f10  52 ed 5d 53 00 00 00 00  00 00 01 00 02 00 00 00  |R.]S............|
 00001f20  00 00 00 00 00 00 00 00  1f 00 00 00 00 00 00 00  |................|
@@ -121,6 +139,9 @@ root@abdul-VirtualBox:/home/abdul/cmsi387/homework/csi-fs# hexdump -C image
 
 
 * (The Data Block for the lost+found directory.) (START)
+
+# JD: This is not really necessary.  Plus your (END) tag is in the wrong place.
+
 00003c00  0b 00 00 00 0c 00 01 02  2e 00 00 00 02 00 00 00  |................|
 00003c10  f4 03 02 02 2e 2e 00 00  00 00 00 00 00 00 00 00  |................|
 00003c20  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
@@ -164,6 +185,11 @@ root@abdul-VirtualBox:/home/abdul/cmsi387/homework/csi-fs# hexdump -C image
 
 
 * (The Data Block for The non-empty.txt File) (START)
+
+# JD: True, this is the data block, but it is easily recognizable.  Based on
+#     the mislabeling above, it is unclear that you knew to find the data at
+#     this location without the text content.
+
 00007000  48 65 6c 6c 6f 20 44 6f  6e 64 69 21 20 48 6f 77  |Hello Dondi! How|
 00007010  27 73 20 69 74 20 67 6f  69 6e 67 3f 20 6a 75 73  |'s it going? jus|
 00007020  74 20 77 61 6e 74 65 64  20 74 6f 20 73 61 79 20  |t wanted to say |
@@ -191,6 +217,8 @@ root@abdul-VirtualBox:/home/abdul/cmsi387/homework/csi-fs# hexdump -C image
 00007810  20 6e 65 65 64 20 74 6f  20 72 65 73 74 0a 00 00  | need to rest...|
 00007820  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 (END)
+
+# JD: This looks like something relevant...but you didn't label it.
 
 * 
 00007c00  2f 68 6f 6d 65 2f 61 62  64 75 6c 2f 2f 63 6d 73  |/home/abdul//cms|
