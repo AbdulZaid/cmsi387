@@ -89,6 +89,8 @@ int main() {
                 /* Parent process. */
                 int result;
                 if (!ampersandPresent) {
+                    // JD: When g++ is used, this warning is an error.
+                    //     So...how did you get *this* to work?
                     wait(&result);
                 }
                 printf("All done; result = %d\n", result);
